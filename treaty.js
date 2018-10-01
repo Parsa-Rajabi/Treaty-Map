@@ -12,6 +12,11 @@ var isChrome = !!window.chrome && !!window.chrome.webstore;
  * Edit treaty information here. "title", "info", and "date" fields will be displayed to the user when a treaty is clicked.
  */
 var treatyInfo = {
+  "initial_info": {
+    title: "",
+    info: "From 1871 to 1921, the Numbered Treaties were signed.  They promised reserve lands, annuities, and the continued right to hunt and fish on unoccupied Crown lands in exchange for Aboriginal title.  All treaties had clauses for schools or teachers to educate children, and agricultural implements were promised to assist Aboriginal signatories in their transition towards an agricultural lifestyle.",
+    date: ""
+  },
   "treaty_1": {
     title: "1",
     info: "The indigenous peoples were to hand over land. In return, the government was to provide each band with a reserve calculates at 160 acres of land for a family of 5. Each band was to be given a gratuity of $3. This annual payment could be provided in cash or items such as clothing, blankets, or hunting supplies based upon the desires of the family. Treaty 1 and 2 are the only treaties that do not specify that the First Nation signatories maintain an ongoing right to hunt and fish in the treaty area.",
@@ -150,6 +155,9 @@ function initGraphics() {
     stage.addChild(treaty);
   }
 
+  // Show inital information.
+  showTreaty("initial_info");
+
   stage.update();
 }
 
@@ -167,7 +175,7 @@ function showTreaty(treatyId) {
   // Set the text to be displayed on the scroll.
   treatyTitleText.text = currentTreaty.title;
   treatyInfoText.text = currentTreaty.info;
-  treatyDateText.text = "Date: " + currentTreaty.date;
+  treatyDateText.text = ((currentTreaty.date == "")? "":"Date: ") + currentTreaty.date;
 
   // Position the text to be displayed on the scroll.
   treatyTitleText.x = panel.x + panel.image.width/2;
